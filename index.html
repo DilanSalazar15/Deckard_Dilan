@@ -1,26 +1,102 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página Simple</title>
+    <title>Format and Copy APN</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
+        /* Estilos generales */
+        * {
+            box-sizing: border-box;
         }
-        h1 {
+        html, body {
+            margin: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        /* Contenedor principal para las dos secciones */
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .left {
+            flex-grow: 8; /* Parte izquierda ocupa el 80% del espacio */
+            height: 100%;
+            border-right: 2px solid #ccc;
+        }
+        .right {
+            flex-grow: 0.3; /* Parte derecha ocupa el 20% del espacio */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 200px; /* Ancho mínimo para evitar que la sección se haga demasiado pequeña */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        #formattedAPN {
+            margin-top: 10px;
+            font-weight: bold;
             color: #333;
         }
-        p {
-            color: #666;
-        }
     </style>
+    <script>
+        let part1, part2, part3;
+
+        // Formatear automáticamente el APN al escribir
+        function autoFormatAPN() {
+            const apnInput = document.getElementById('apn').value;
+            const formattedAPN = apnInput.replace(/^(\d{3})(\d{0,4})(\d{0,5})$/, (match, p1, p2, p3) => {
+                part1 = p1 || '';
+                part2 = p2 || '';
+                part3 = p3 || '';
+                return `${part1}-${part2}-${part3}`.replace(/-+$/, ''); // Elimina guiones al final si las partes están incompletas
+            });
+            document.getElementById('apn').value = formattedAPN;
+            document.getElementById('formattedAPN').innerText = formattedAPN;
+        }
+
+        // Función para copiar las partes del APN
+        function copyPart(part) {
+            const tempText = document.createElement('textarea');
+            tempText.value = part;
+            document.body.appendChild(tempText);
+            tempText.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempText);
+        }
+    </script>
 </head>
 <body>
-    <h1>Bienvenido a mi Página Web</h1>
-    <p>Este es un ejemplo de una página web simple creada con HTML.</p>
+    <div class="container">
+        <!-- Columna izquierda: Iframe con la página externa -->
+        <div class="left">
+            <iframe src="https://apps.stlouiscountymn.gov/assessor/propertydetails/" title="Property Details"></iframe>
+        </div>
+
+        <!-- Columna derecha: Formato y botones para APN -->
+        <div class="right">
+            <h2>Formato de APN</h2>
+            <label for="apn">Ingresa el APN:</label>
+            <input type="text" id="apn" maxlength="13" placeholder="488006000190" oninput="autoFormatAPN()">
+
+            <!-- Mostrar APN Formateado -->
+            <p id="formattedAPN"></p>
+
+            <button onclick="copyPart(part1)">Copiar Parte 1</button>
+            <button onclick="copyPart(part2)">Copiar Parte 2</button>
+            <button onclick="copyPart(part3)">Copiar Parte 3</button>
+        </div>
+    </div>
 </body>
 </html>
