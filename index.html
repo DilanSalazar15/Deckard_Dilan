@@ -33,8 +33,7 @@
             min-width: 200px; 
             background-image: url('zoom_illo_houses_cyan.png');
             background-size: cover; 
-            background-opacity: 0.5;
-            background-position: center; 
+            background-position: right; 
             color: black; 
         }
         iframe {
@@ -56,11 +55,10 @@
     </style>
     <script>
         function autoFormatAPN() {
-            const apnInput = document.getElementById('apn').value;
+            const apnInput = document.getElementById('apn').value.replace(/-/g, '');
             const formattedAPN = apnInput.replace(/^(\d{2})(\d{4})(\d{4})(\d{4})(\d{2})$/, (match, p1, p2, p3, p4, p5) => {
                 return `${p1}-${p2}-${p3}-${p4}-${p5}`;
             });
-            document.getElementById('apn').value = formattedAPN;
             document.getElementById('formattedAPN').innerText = formattedAPN;
         }
 
