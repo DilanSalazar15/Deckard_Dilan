@@ -61,6 +61,14 @@
             });
             document.getElementById('formattedAPN').innerText = formattedAPN;
         }
+        
+        function validarAPN() {
+            const input = document.getElementById('apn');
+            const valor = input.value;
+            // Eliminar cualquier carácter que no sea un dígito y limitar a 16 caracteres
+            input.value = valor.replace(/\D/g, '').slice(0, 16);
+            autoFormatAPN(); // Formatear después de validar
+        }
 
         async function copyPart(part) {
             try {
