@@ -66,7 +66,7 @@
         async function copyPart(part) {
             try {
                 await navigator.clipboard.writeText(part);
-                alert(`Parte copiada: ${part}`);
+                
             } catch (err) {
                 console.error('Error al copiar: ', err);
             }
@@ -80,13 +80,13 @@
         </div>
 
         <div class="right">
-            <h2>Formato de APN</h2>
-            <label for="apn">Ingresa el APN:</label>
+            <h2>APN con guiones</h2>
+            <label for="apn">Ingresa la APN:</label>
             <input type="text" id="apn" maxlength="20" placeholder="6740101003000000" oninput="autoFormatAPN()">
 
             <p id="formattedAPN"></p>
 
-            <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Formateado</button>
+            <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Ajustada</button>
         </div>
     </div>
 </body>
