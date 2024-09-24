@@ -14,28 +14,27 @@
             height: 100%;
             font-family: Arial, sans-serif;
         }
-        /* Contenedor principal para las dos secciones */
         .container {
             display: flex;
             height: 100vh;
         }
         .left {
-            flex-grow: 8; /* Parte izquierda ocupa el 80% del espacio */
+            flex-grow: 8; 
             height: 100%;
             border-right: 2px solid #ccc;
         }
         .right {
-            flex-grow: 0.3; /* Parte derecha ocupa el 20% del espacio */
+            flex-grow: 0.3; 
             padding: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-width: 200px; /* Ancho mínimo para evitar que la sección se haga demasiado pequeña */
-            background-image: url('C:\Users\Usuario\Desktop\Deckard.png'); /* Cambia esto por la ruta de tu imagen */
-            background-size: cover; /* Ajusta la imagen para cubrir el cuadro */
-            background-position: center; /* Centra la imagen */
-            color: white; /* Cambia el color del texto si es necesario */
+            min-width: 200px; 
+            background-image: url('C:\path\to\your\image.png'); /* Cambia esto por la ruta de tu imagen */
+            background-size: cover; 
+            background-position: center; 
+            color: white; 
         }
         iframe {
             width: 100%;
@@ -55,52 +54,41 @@
         }
     </style>
     <script>
-        let part1, part2, part3;
-
-        // Formatear automáticamente el APN al escribir
         function autoFormatAPN() {
             const apnInput = document.getElementById('apn').value;
-            const formattedAPN = apnInput.replace(/^(\d{3})(\d{0,4})(\d{0,5})$/, (match, p1, p2, p3) => {
-                part1 = p1 || '';
-                part2 = p2 || '';
-                part3 = p3 || '';
-                return `${part1}-${part2}-${part3}`.replace(/-+$/, ''); // Elimina guiones al final si las partes están incompletas
+            const formattedAPN = apnInput.replace(/^(\d{2})(\d{4})(\d{4})(\d{4})(\d{2})$/, (match, p1, p2, p3, p4, p5) => {
+                return `${p1}-${p2}-${p3}-${p4}-${p5}`;
             });
             document.getElementById('apn').value = formattedAPN;
             document.getElementById('formattedAPN').innerText = formattedAPN;
         }
 
-        // Función para copiar las partes del APN
-        function copyPart(part) {
-            const tempText = document.createElement('textarea');
-            tempText.value = part;
-            document.body.appendChild(tempText);
-            tempText.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempText);
+        async function copyPart(part) {
+            try {
+                await navigator.clipboard.writeText(part);
+                alert(`Parte copiada: ${part}`);
+            } catch (err) {
+                console.error('Error al copiar: ', err);
+            }
         }
     </script>
 </head>
 <body>
     <div class="container">
-        <!-- Columna izquierda: Iframe con la página externa -->
         <div class="left">
             <iframe src="https://cameron.prodigycad.com/maps" title="Map Search"></iframe>
         </div>
 
-        <!-- Columna derecha: Formato y botones para APN -->
         <div class="right">
             <h2>Formato de APN</h2>
             <label for="apn">Ingresa el APN:</label>
-            <input type="text" id="apn" maxlength="13" placeholder="488006000190" oninput="autoFormatAPN()">
+            <input type="text" id="apn" maxlength="20" placeholder="6740101003000000" oninput="autoFormatAPN()">
 
-            <!-- Mostrar APN Formateado -->
             <p id="formattedAPN"></p>
 
-            <button onclick="copyPart(part1)">Copiar Parte 1</button>
-            <button onclick="copyPart(part2)">Copiar Parte 2</button>
-            <button onclick="copyPart(part3)">Copiar Parte 3</button>
+            <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Formateado</button>
         </div>
     </div>
 </body>
 </html>
+
