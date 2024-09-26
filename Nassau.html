@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APN para Parcel number</title>
+    <style>
+        /* Estilos generales */
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            margin: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+        .left {
+            flex-grow: 8; 
+            height: 100%;
+            border-right: 2px solid #ccc;
+        }
+        .right {
+            flex-grow: 0.3; 
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-width: 200px; 
+            position: relative; /* Para manejar la posición de los elementos */
+            color: black; 
+        }
+        .background {
+            background-image: url('zoom_illo_houses_cyan.png');
+            background-size: cover; 
+            background-position: right; 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.5; /* Opacidad de la imagen de fondo */
+            z-index: 0; /* Asegura que la imagen esté detrás */
+        }
+        .content {
+            position: relative;
+            z-index: 1; /* Asegura que el contenido esté encima */
+            width: 100%; /* Asegura que el contenido ocupe el ancho completo */
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        #formattedAPN {
+            margin-top: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+    <script>
+        function autoFormatAPN() {
+            const apnInput = document.getElementById('apn').value.replace(/-/g, '');
+            const formattedAPN = apnInput.replace(/^(\d{2})(\d{2})(\d{2})(\d{4})(\d{4})(\d{4})$/, (match, p1, p2, p3, p4, p5, p6) => {
+                return `${p1}-${p2}-${p3}-${p4}-${p5}-${p6}`;
+            });
+            document.getElementById('formattedAPN').innerText = formattedAPN;
+        }
+        
+        function validarAPN() {
+            const input = document.getElementById('apn');
+            const valor = input.value;
+            // Eliminar cualquier carácter que no sea un dígito y limitar a 18 caracteres
+            input.value = valor.replace(/\D/g, '').slice(0, 18);
+            autoFormatAPN(); // Formatear después de validar
+        }
+
+        async function copyPart(part) {
+            try {
+                await navigator.clipboard.writeText(part);
+                
+            } catch (err) {
+                console.error('Error al copiar: ', err);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="left">
+            <iframe src="https://maps.nassauflpa.com/NassauTaxMap/" title="Search By"></iframe>
+        </div>
+
+        <div class="right">
+            <div class="background"></div> <!-- Contenedor para la imagen de fondo -->
+            <div class="content">
+                <h2>APN con guiones</h2>
+                <label for="apn">Ingresa la APN:</label>
+                <input type="text" id="apn" maxlength="18" placeholder="000030085C00300000" oninput="autoFormatAPN()">
+
+                <p id="formattedAPN"></p>
+
+                <button onclick="copyPart(document.getElementById('formattedAPN').innerText)">Copiar APN Ajustada</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
