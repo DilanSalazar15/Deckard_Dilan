@@ -5,7 +5,7 @@ body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    background-image: url('/Deckard/zoom_dotlines_white.png'); /* Ruta relativa de la imagen */
+    /* background-image: url('/Deckard/zoom_dotlines_white.png'); /* Ruta relativa de la imagen */
     background-size: cover; 
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     background-position: bottom right; /* Posiciona la imagen en la esquina inferior derecha */
