@@ -28,7 +28,7 @@ body::before {
 
 /* Contenedor principal */
 .container {
-    max-width: 600px;
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
     background-color: #444;
@@ -54,6 +54,12 @@ h1 {
     margin: 0 10px; /* Espaciado entre secciones */
 }
 
+.subtitle-container {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
 label {
     display: block;
     margin-bottom: 10px;
@@ -73,24 +79,17 @@ select, input[type="file"] {
     align-items: center; 
     justify-content: center;
 }
-/* Formulario */
-form {
-    margin-top: 20px;
-}
 
-input[type="file"] {
-    margin: 10px 0;
-}
-
-button {
-    background-color: #007bff;
-    color: #fff;
+.process-button {
+    background-color: #28a745; /* Color verde */
+    color: white; /* Color del texto */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    margin-top: 20px; /* Espacio encima del botón */   
 }
 
-button:hover {
-    background-color: #0056b3;
+.process-button: hover {
+     background-color: #218838; /* Color verde más oscuro al pasar el mouse */
 }
