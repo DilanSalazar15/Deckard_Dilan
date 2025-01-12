@@ -8,11 +8,12 @@ body {
     background-image: url('/Deckard/zoom_dotlines_white.png'); /* Ruta relativa de la imagen */
     background-size: cover; 
     background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: bottom right; /* Centra la imagen */
+    background-position: bottom right; /* Posiciona la imagen en la esquina inferior derecha */
     background-attachment: fixed;
     position: relative; /* Necesario para el pseudo-elemento */
     background-color: #f8f9fa; /* Fondo de respaldo */
 }
+
 body::before {
     content: "";
     position: absolute;
@@ -20,7 +21,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 50% de opacidad */
+    background-color: rgba(0, 0, 0, 0.2); /* Fondo negro con 20% de opacidad */
     z-index: -1; /* Asegura que el fondo esté debajo del contenido */
 }
 
@@ -31,7 +32,7 @@ body::before {
     padding: 20px;
     background-color: #333;
     border-radius: 8px;
-    Color: white
+    color: white; /* Corregido: 'Color' debe ser 'color' en minúscula */
     text-align: center; /* Mantiene el texto centrado */
 }
 
