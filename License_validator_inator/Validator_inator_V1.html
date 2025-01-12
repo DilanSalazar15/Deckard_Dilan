@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesar Datos de Licencias</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Procesar Archivo de Licencias</h1>
+        <form action="/procesar" method="post" enctype="multipart/form-data">
+            <label for="archivo">Sube tu archivo Excel:</label>
+            <input type="file" name="archivo" id="archivo" accept=".xlsx" required>
+            <button type="submit">Procesar Archivo</button>
+        </form>
+    </div>
+</body>
+</html>
