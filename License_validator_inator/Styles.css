@@ -15,10 +15,9 @@ body {
 .container {
     max-width: 600px;
     margin: auto;
-    background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Mantiene el texto centrado */
 }
 
 /* Formulario */
