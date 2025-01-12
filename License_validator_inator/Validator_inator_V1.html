@@ -9,12 +9,29 @@
 </head>
 <body>
     <div class="container">
-        <h1>Procesar Archivo de Licencias</h1>
-        <form action="/procesar" method="post" enctype="multipart/form-data">
-            <label for="archivo">Sube tu archivo Excel:</label>
-            <input type="file" name="archivo" id="archivo" accept=".xlsx" required>
-            <button type="submit">Procesar Archivo</button>
-        </form>
+        <h1>Validador-inador de Licencias</h1>
+        <div class="sections">
+            <div class="sections">
+                <h2>Selecciona el proyecto</h2>
+                <label for="proyecto">Proyecto:</label>
+                <select id="proyecto" name="proyecto" required>
+                    <option value="">-- Selecciona un proyecto --</option>
+                    <option value="proyecto1">Proyecto 1</option>
+                    <option value="proyecto2">Proyecto 2</option>
+                    <option value="proyecto3">Proyecto 3</option>
+                </select>
+            </div>
+            <div class="section">
+                <h2>Sube el archivo o licencia</h2>
+                <label for="archivo">Archivo Excel (.xlsx):</label>
+                <input type="file" name="archivo" id="archivo" accept=".xlsx" required>
+            </div>
+            <div class="section">
+                <h2>Pre-visualización de la APN</h2>
+                <div class="preview-box">
+                    <p>No hay datos para mostrar.</p>
+                </div>
+            </div>
     </div>
 </body>
 </html>
