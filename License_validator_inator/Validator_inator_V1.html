@@ -12,7 +12,9 @@
         <h1>Validador-inador de Licencias</h1>
         <div class="sections">
             <div class="sections">
-                <h2>Selecciona el proyecto</h2>
+                <div class="subtitle-container">
+                    <h2 class ="subtitle">Selecciona el proyecto</h2>
+                </div>             
                 <label for="proyecto">Proyecto:</label>
                 <select id="proyecto" name="proyecto" required>
                     <option value="">-- Selecciona un proyecto --</option>
@@ -22,16 +24,21 @@
                 </select>
             </div>
             <div class="section">
-                <h2>Sube el archivo o licencia</h2>
+                <div class ="subtitle-container">
+                    <h2>Sube el archivo o licencia</h2>
+                </div>
                 <label for="archivo">Archivo Excel (.xlsx):</label>
                 <input type="file" name="archivo" id="archivo" accept=".xlsx" required>
             </div>
             <div class="section">
-                <h2>Pre-visualización de la APN</h2>
+                <div class="subtitle-container">
+                    <h2>Pre-visualización de la APN</h2>
+                </div>    
                 <div class="preview-box">
                     <p>No hay datos para mostrar.</p>
                 </div>
             </div>
+            <button class="process-button">Procesar archivo</button>
     </div>
 </body>
 </html>
