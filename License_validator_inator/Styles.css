@@ -9,7 +9,6 @@ body {
     background-size: contain; /* Muestra la imagen completa */
     background-repeat: no-repeat; /* Evita que la imagen se repita */
     background-position: center; /* Centra la imagen */
-    background-color: #f8f9fa; /* Color de respaldo */
 }
 
 /* Contenedor principal */
