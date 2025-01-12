@@ -29,7 +29,9 @@ body::before {
     max-width: 600px;
     margin: auto;
     padding: 20px;
+    background-color: #333;
     border-radius: 8px;
+    Color: white
     text-align: center; /* Mantiene el texto centrado */
 }
 
