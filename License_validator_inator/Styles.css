@@ -8,7 +8,7 @@ body {
     background-image: url('/Deckard/zoom_dotlines_white.png'); /* Ruta relativa de la imagen */
     background-size: cover; 
     background-repeat: no-repeat; /* Evita que la imagen se repita */
-    background-position: right; /* Centra la imagen */
+    background-position: bottom right; /* Centra la imagen */
 }
 
 /* Contenedor principal */
