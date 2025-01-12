@@ -37,6 +37,42 @@ body::before {
     text-align: center; /* Mantiene el texto centrado */
 }
 
+h1 {
+    margin-bottom: 20px;
+}
+.sections {
+    display: flex;
+    justify-content: space-between; /* Espacio entre las secciones */
+    margin-top: 20px;
+}
+
+.section {
+    background-color: #444; /* Fondo de las secciones */
+    border-radius: 8px;
+    padding: 20px;
+    flex: 1; /* Permite que las secciones ocupen el mismo espacio */
+    margin: 0 10px; /* Espaciado entre secciones */
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+select, input[type="file"] {
+    width: 100%; /* Ancho completo */
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.preview-box {
+    height: 100px; 
+    background-color: #555; 
+    border-radius: 8px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
 /* Formulario */
 form {
     margin-top: 20px;
