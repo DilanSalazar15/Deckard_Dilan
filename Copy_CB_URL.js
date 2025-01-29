@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.2
 // @description  
-// @author       Dilan Salazar
+// @author       Luchito & Dilan
 // @match        https://cyborg.deckard.com/listing/*/STR*
 // @grant        none
 // ==/UserScript==
