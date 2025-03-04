@@ -34,5 +34,35 @@
         </div>
         <button class="process-button">Procesar archivo</button>
     </div>
+
+    <script>
+    document.querySelector(".process-button").addEventListener("click", function () {
+        let formData = new FormData();
+        let fileInput = document.getElementById("archivo");
+        
+        if (!fileInput.files.length) {
+            alert("Por favor, selecciona un archivo.");
+            return;
+        }
+        
+        formData.append("archivo", fileInput.files[0]);
+
+        fetch("http://127.0.0.1:5000/upload", {
+            method: "POST",
+            body: formData
+        })
+        .then(response => response.blob())
+        .then(blob => {
+            let url = window.URL.createObjectURL(blob);
+            let a = document.createElement("a");
+            a.href = url;
+            a.download = "archivo_procesado.xlsx";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        })
+        .catch(error => console.error("Error al procesar el archivo:", error));
+    });
+    </script>
 </body>
 </html>
